@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="interaface">
+        js面向对象
+    </div>
+    <script>
+        //工厂函数创建对象
+        const foctoryFun = () => {
+            function creactObject(name, age) {
+                //手动创建构造函数
+                let obj = new Object()
+                //手动添加内容
+                obj.name = name
+                obj.age = age
+                //手动返回这个对象
+                return obj
+            }
+            //使用工厂函数创建
+            let o1 = creactObject('xigua', 10)
+            console.log(o1);
+            let o2 = creactObject('ziheng', 12)
+            console.log(o2);
+        }
+        //构造函数创建对象
+        const structure = () => {
+            //创建构造函数
+            function Creactobj (name, age) {
+                //自动创建构造函数
+                //手动添加内容
+                this.name = name
+                this.age = age
+                //自动返回这个对象
+            }
+            let o1 = new Creactobj('xigua', 10)
+            console.log(o1);
+        }
+        
+        /* 构造函数的书写和使用 */
+        (() => {
+            //构造函数也是函数， 只不过是在调用的时候和new 关键字连用了，
+                /* 1.和new连用，
+                   2.不要return ，return基本类型，写了也不返回，return 复杂类型，构造函数就白写了，就成了返回的复杂类型
+                   3.如果不用传递参数，（）可以不用写  
+                   4.首字母大写，便于区分  
+                   5.当函数和 new 连用，
+                        => 会创造对象，我们管创造出来的对象叫 实例对象
+                        => 管创造过程，叫做 实例化 过程
+                        => 构造函数体内的  this  指向该实例对象 
+                */
+            //目的：就是为了创建一个 有属性 有方法 合理的对象
+            //构造函数是否合理
+                /* 
+                    1.一旦在构造函数体内书写方法的时候，创建多少个实例对象就会有多少个方法要占用内存空间，
+                    2. 会有多余的函数内存空间被占用 -->函数提取出来，但是变量名被占用。
+                */
+                function a () {
+                    console.log('你好， 世界');
+                }
+            function Person (name) {
+                this.name = name 
+                this.sayhi = a
+            }
+            const p1 = new Person ('张三')
+            const p2 = new Person ('李四')
+            console.log(p1, p2);
+        })
+        {
+            /* 
+                prototype (原型/原型对象)
+                    定义：每个函数天生自带属性prorotype，他是一个对象，只要函数定义，那么他就存在了，
+                    构造函数中也有prototype，我们可以向里边添加一些内容，
+                    自带的prototype中有一个属性叫做constructor，==> 表示我是那个构造函数伴生的原型对象。
+            */
+            
+        }
+            
+    </script>
+</body>
+
+</html>
